@@ -33,6 +33,8 @@ sub get_hooks {
     my $logopt = delete($conf{logopt});
     $logopt = "pid" unless defined $logopt;
 
+    keys %conf and die "Unknown configuration: ".join(", ", sort keys %conf);
+
     require Sys::Syslog;
     Sys::Syslog::openlog($ident, $logopt, $facility) or die;
 
