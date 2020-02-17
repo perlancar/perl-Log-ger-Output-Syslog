@@ -26,9 +26,9 @@ sub get_hooks {
     defined($ident) or die "Please specify ident";
 
     my $facility = $conf{facility} || 'user';
-    $facility =~ /\A(auth|daemon|ftp|mail|user)\z/
+    $facility =~ /\A(auth|authpriv|cron|daemon|ftp|kern|local[0-7]|lpr|mail|news|syslog|user|uucp)\z/
         or die "Invalid value for facility, please choose ".
-        "auth|daemon|ftp|mail|user";
+        "auth|authpriv|cron|daemon|ftp|kern|local[0-7]|lpr|mail|news|syslog|user|uucp";
 
     my $logopt = delete($conf{logopt});
     $logopt = "pid" unless defined $logopt;
@@ -79,6 +79,7 @@ sub get_hooks {
 =head1 DESCRIPTION
 
 This output plugin sends logs to syslog using L<Sys::Syslog>.
+It accepts all C<syslog(3)> facilities.
 
 
 =head1 CONFIGURATION
