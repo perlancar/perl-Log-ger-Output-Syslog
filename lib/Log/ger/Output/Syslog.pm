@@ -1,6 +1,8 @@
 package Log::ger::Output::Syslog;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use strict 'subs', 'vars';
@@ -43,7 +45,7 @@ sub get_hooks {
             __PACKAGE__, # key
             50,          # priority
             sub {        # hook
-                my %hook_args = @_;
+                my %hook_args = @_; # see Log::ger::Manual::Internals/"Arguments passed to hook"
 
                 my $str_level = $hook_args{str_level};
                 $level_map{$str_level} or die "Don't know how to map ".
