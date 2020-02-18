@@ -27,7 +27,7 @@ sub get_hooks {
     my $ident = delete($conf{ident});
     defined($ident) or die "Please specify ident";
 
-    my $facility = $conf{facility} || 'user';
+    my $facility = delete($conf{facility}) || 'user';
     $facility =~ /\A(auth|authpriv|cron|daemon|ftp|kern|local[0-7]|lpr|mail|news|syslog|user|uucp)\z/
         or die "Invalid value for facility, please choose ".
         "auth|authpriv|cron|daemon|ftp|kern|local[0-7]|lpr|mail|news|syslog|user|uucp";
